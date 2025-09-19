@@ -7,12 +7,11 @@ business entities used throughout the application.
 
 from __future__ import annotations
 
-import os
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Union
+from typing import Dict, List, Optional, Set
 from urllib.parse import urlparse
 
 
@@ -388,6 +387,6 @@ class CacheEntry:
     
     def touch(self) -> None:
         """Update last accessed time and increment access count."""
-        
+
         self.last_accessed = datetime.now()
         self.access_count += 1
