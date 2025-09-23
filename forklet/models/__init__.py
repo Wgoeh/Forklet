@@ -98,6 +98,11 @@ class RepositoryInfo:
     language: Optional[str] = None
     description: Optional[str] = None
     topics: List[str] = field(default_factory=list)
+
+    @property
+    def display_name(self):
+        """return the repo s'displayneme"""
+        return f'{self.owner}/{self.name}'
     
     def __post_init__(self) -> None:
         """Validate repository information after initialization."""
@@ -295,6 +300,23 @@ class ProgressInfo:
         """Get elapsed time in seconds."""
 
         return (datetime.now() - self.started_at).total_seconds()
+
+    def update_file_progress(
+        self, 
+        bytes_downloaded: int, 
+        current_file: Optional[str] = None
+    ) -> None:
+        """Update progress for the current file."""
+
+        self.downloaded_bytes += bytes_downloaded
+        if current_file:
+            self.current_file = current_file
+    
+    def complete_file(self) -> None:
+        """Mark a file as completed."""
+        
+        self.downloaded_files += 1
+        self.current_file = None
 
 
 ####

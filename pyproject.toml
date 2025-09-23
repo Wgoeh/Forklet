@@ -13,6 +13,7 @@ keywords = [
 ]
 
 dependencies = [
+    "httpx>=0.28.1",
     "pydantic>=2.11.9",
     "pygithub>=2.8.1",
     "python-dotenv>=1.1.1",
@@ -36,7 +37,7 @@ dev = [
 ]
 
 [project.scripts]
-valkyrie = "forklet.__main__:main"
+forklet = "forklet.__main__:main"
 
 [project.urls]
 # Homepage = "https://alldotpy.github.io/FletX"
